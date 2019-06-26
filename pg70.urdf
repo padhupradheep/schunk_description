@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<robot name="gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:macro name="pg70" params="parent *origin">
+
+<joint name="cabinet_joints" type="fixed">
+      <parent link="${parent}" />
+      <child link = "schunk_palm_link" />
+      <insert_block name="origin" />
+    </joint>
+
+<link name="schunk_palm_link">
+      <visual>
+         <geometry>
+          <mesh filename="package://schunk_description/meshes/schunk_body.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://schunk_description/meshes/schunk_body.dae" />
+        </geometry>
+      </collision>
+
+    </link>
+
+<link name="moving_part1">
+      <visual>
+         <geometry>
+          <mesh filename="package://schunk_description/meshes/schunk_movingpart1.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://schunk_description/meshes/schunk_movingpart1.dae" />
+        </geometry>
+      </collision>
+
+    </link>
+
+<joint name="moving_part1_joint" type="fixed">
+      <parent link="schunk_palm" />
+      <child link = "moving_part1" />
+      <origin xyz="0.0 0.0 0.416" rpy="0.0 0.0 0.0" />
+    </joint>
+
+<link name="right_finger">
+      <visual>
+         <geometry>
+          <mesh filename="package://schunk_description/meshes/finger.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://schunk_description/meshes/finger.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </collision>
+
+    </link>
+    <joint name="right_finger_joint" type="fixed">
+      <parent link="moving_part1" />
+      <child link = "right_finger" />
+      <origin xyz="0.0 0.0 0.416" rpy="0.0 0.0 0.0" />
+    </joint>
+
+<link name="moving_part2">
+      <visual>
+         <geometry>
+          <mesh filename="package://schunk_description/meshes/schunk_movingpart2.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://schunk_description/meshes/schunk_movingpart2.dae" />
+        </geometry>
+      </collision>
+
+    </link>
+
+<joint name="moving_part2_joint" type="fixed">
+      <parent link="schunk_palm" />
+      <child link = "moving_part2" />
+      <origin xyz="0.0 0.0 0.416" rpy="0.0 0.0 0.0" />
+    </joint>
+
+<link name="left_finger">
+      <visual>
+         <geometry>
+          <mesh filename="package://schunk_description/meshes/left_finger.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://schunk_description/meshes/left_finger.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+    <joint name="left_finger_joint" type="fixed">
+      <parent link="moving_part2" />
+      <child link = "left_finger" />
+      <origin xyz="0.133 0.0 0.416" rpy="0.0 0.0 0.0" />
+    </joint>
+  </xacro:macro>
+
+</robot>
