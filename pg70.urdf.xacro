@@ -39,7 +39,8 @@
 <joint name="moving_part1_joint" type="fixed">
       <parent link="schunk_palm_link" />
       <child link = "moving_part1" />
-      <origin xyz="0.0 0.0 0.416" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.01 0.01 0.09" rpy="1.57 0.0 0.0" />
+          <limit effort="1000.0" lower="-0.38" upper="0" velocity="0.5"/>
     </joint>
 
 <link name="right_finger">
@@ -58,7 +59,7 @@
     <joint name="right_finger_joint" type="fixed">
       <parent link="moving_part1" />
       <child link = "right_finger" />
-      <origin xyz="0.0 0.0 0.416" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.0 0.01 0.01" rpy="0.0 0.0 1.57" />
     </joint>
 
 <link name="moving_part2">
@@ -78,7 +79,8 @@
 <joint name="moving_part2_joint" type="fixed">
       <parent link="schunk_palm_link" />
       <child link = "moving_part2" />
-      <origin xyz="0.0 0.0 0.416" rpy="0.0 0.0 0.0" />
+          <limit effort="1000.0" lower="-0.38" upper="0" velocity="0.5"/>
+      <origin xyz="-0.01 -0.01 0.09" rpy="0.0 0.0 0.0" />
     </joint>
 
 <link name="left_finger">
@@ -98,8 +100,16 @@
     <joint name="left_finger_joint" type="fixed">
       <parent link="moving_part2" />
       <child link = "left_finger" />
-      <origin xyz="0.133 0.0 0.416" rpy="0.0 0.0 0.0" />
+      <origin xyz="0. -0.01 0.01" rpy="0.0 0.0 0.0" />
     </joint>
+
+<plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="mimic_schunk">
+                <joint>moving_part2_joint</joint>
+                <mimicJoint>moving_part1_joint</mimicJoint>
+                <!--multiplier>1.0</multiplier>
+                <offset>0.0</offset-->
+</plugin>
+
   </xacro:macro>
 
 </robot>
