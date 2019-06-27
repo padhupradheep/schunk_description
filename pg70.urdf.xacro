@@ -46,12 +46,12 @@
 <link name="right_finger">
       <visual>
          <geometry>
-          <mesh filename="package://schunk_description/meshes/finger.stl" scale="0.01 0.01 0.01"/>
+          <mesh filename="package://schunk_description/meshes/finger1.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://schunk_description/meshes/finger.stl" scale="0.01 0.01 0.01"/>
+          <mesh filename="package://schunk_description/meshes/finger1.dae"/>
         </geometry>
       </collision>
 
@@ -59,7 +59,7 @@
     <joint name="right_finger_joint" type="fixed">
       <parent link="moving_part1" />
       <child link = "right_finger" />
-      <origin xyz="0.0 0.01 0.01" rpy="0.0 0.0 1.57" />
+      <origin xyz="-0.03 0.06 0.01" rpy="-1.57 0.0 0" />
     </joint>
 
 <link name="moving_part2">
@@ -86,12 +86,12 @@
 <link name="left_finger">
       <visual>
          <geometry>
-          <mesh filename="package://schunk_description/meshes/left_finger.stl" scale="0.01 0.01 0.01"/>
+          <mesh filename="package://schunk_description/meshes/finger2.dae" />
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://schunk_description/meshes/left_finger.stl" scale="0.01 0.01 0.01"/>
+          <mesh filename="package://schunk_description/meshes/finger2.dae" />
         </geometry>
       </collision>
 
@@ -100,7 +100,7 @@
     <joint name="left_finger_joint" type="fixed">
       <parent link="moving_part2" />
       <child link = "left_finger" />
-      <origin xyz="0. -0.01 0.01" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.03 0.01 0.06" rpy="0.0 0.0 0.0" />
     </joint>
 
 <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="mimic_schunk">
